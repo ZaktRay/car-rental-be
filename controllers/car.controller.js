@@ -55,8 +55,6 @@ const getCarById = async (req, res) => {
             category: car.category,
             available: car.isAvailable,
             feature: car.features || [],
-            power: car.power,
-            speed: car.speed,
             transmission: car.transmission,
             fuelType: car.fuelType,
             seatingCapacity: car.seats,
