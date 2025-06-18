@@ -53,7 +53,7 @@ const getCarById = async (req, res) => {
             price: car.price,
             image: car.image,
             category: car.category,
-            availble: car.isAvaible,
+            available: car.isAvailable,
             feature: car.features || [],
             power: car.power,
             speed: car.speed,

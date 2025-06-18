@@ -12,8 +12,7 @@ const createBooking = async (req, res) => {
             dropoffTime,
             pickupLocation,
             dropoffLocation,
-            totalAmount,
-            status
+            totalAmount
         } = req.body
 
         const start = new Date(startDate);
