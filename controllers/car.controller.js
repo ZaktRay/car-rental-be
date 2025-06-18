@@ -40,7 +40,7 @@ const addCar = async (req, res) => {
 
 const getCarById = async (req, res) => {
     try {
-        const car = Car.findById(req.params.id);
+        const car = await Car.findById(req.params.id);
         if(!car){
             return res.status(404).json({
                 message : "car not found"
