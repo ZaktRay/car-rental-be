@@ -138,6 +138,7 @@ const searchCars = async (req, res) => {
         id: car._id,
         name: car.name,
         price: car.price,
+        brand:car.brand,
         image: car.image,
         category: car.category,
         available: car.isAvailable,
