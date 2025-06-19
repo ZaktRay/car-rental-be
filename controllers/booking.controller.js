@@ -27,11 +27,11 @@ const createBooking = async (req, res) => {
         }
 
         if (start > end) {
-            res.status(400).json({
+            return res.status(400).json({
                 success: false,
                 message: "Start date must be before end date"
             })
-            return;
+            
         }
 
         const car = await Car.findById(carId)
