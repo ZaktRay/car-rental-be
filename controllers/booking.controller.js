@@ -132,7 +132,7 @@ const updateBookingStatus = async (req, res) => {
 
 const getUserBookings = async (req, res) => {
     try {
-        if (!req.user || !req.user._id) {
+        if (!req.user || !req.user.id) {
             return res.status(401).json({
                 success: false,
                 message: 'User is not authed'
