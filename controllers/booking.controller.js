@@ -139,7 +139,7 @@ const getUserBookings = async (req, res) => {
             })
         }
 
-        const userId = req.user._id;
+        const userId = req.user.id;
 
         const bookings = await Booking.find({ userId })
             .populate({
