@@ -51,12 +51,9 @@ const createBooking = async (req, res) => {
         const existingBooking = await Booking.findOne({
             carId,
             status: { $nin: ['cancelled', 'completed'] },
-            $or: [
-                {
-                    startDate: { $lte: end },
-                    endDate: { $gte: start }
-                }
-            ]
+            startDate: { $lte: end },
+            endDate: { $gte: start }
+
         })
         if (existingBooking) {
             return res.status(400).json({
@@ -173,7 +170,7 @@ const getUserBookings = async (req, res) => {
 
 const getBookingById = async (req, res) => {
     try {
-        const id  = req.params.id;
+        const id = req.params.id;
         const booking = await Booking.findOne(id).populate({
             path: 'carId',
             select: 'name brand model year price image fuelType transmission seats features'
@@ -203,8 +200,8 @@ const getBookingById = async (req, res) => {
 
 const cancelBooking = async (req, res) => {
     try {
-        const {id} = req.body;
-        const booking = await Booking.findByIdAndUpdate(id, { status : "cancelled" }, { new: true });
+        const { id } = req.body;
+        const booking = await Booking.findByIdAndUpdate(id, { status: "cancelled" }, { new: true });
         res.json({
             success: true,
             data: booking
