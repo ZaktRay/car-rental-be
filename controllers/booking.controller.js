@@ -31,6 +31,7 @@ const createBooking = async (req, res) => {
                 success: false,
                 message: "Start date must be before end date"
             })
+            return;
         }
 
         const car = await Car.findById(carId)
