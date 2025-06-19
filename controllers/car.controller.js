@@ -50,6 +50,7 @@ const getCarById = async (req, res) => {
         const carDetails = {
             id: car._id,
             name: car.name,
+            brand:car.brand,
             price: car.price,
             image: car.image,
             category: car.category,

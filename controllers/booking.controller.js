@@ -47,7 +47,7 @@ const createBooking = async (req, res) => {
             })
         }
 
-        const exsistingBooking = await Booking.findOne({
+        const existingBooking = await Booking.findOne({
             carId,
             status: { $nin: ['cancelled', 'completed'] },
             $or: [
@@ -57,7 +57,7 @@ const createBooking = async (req, res) => {
                 }
             ]
         })
-        if (exsistingBooking) {
+        if (existingBooking) {
             return res.status(400).json({
                 success: false,
                 message: 'Car is already booked.'
