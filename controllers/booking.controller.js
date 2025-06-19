@@ -203,7 +203,7 @@ const getBookingById = async (req, res) => {
 
 const cancelBooking = async (req, res) => {
     try {
-        const id = req.body;
+        const {id} = req.body;
         const booking = await Booking.findByIdAndUpdate(id, { status : "cancelled" }, { new: true });
         res.json({
             success: true,
