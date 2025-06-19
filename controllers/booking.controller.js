@@ -5,7 +5,6 @@ const createBooking = async (req, res) => {
     try {
         const {
             carId,
-            userId,
             startDate,
             endDate,
             pickupTime,
@@ -14,6 +13,8 @@ const createBooking = async (req, res) => {
             dropoffLocation,
             totalAmount
         } = req.body
+
+        const userId = req.user.id;
 
         const start = new Date(startDate);
         const end = new Date(endDate);
