@@ -19,6 +19,12 @@ const adminSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    role :{
+        type : String,
+        required : true,
+        default : "admin",
+        immutable: true 
+    },
     lastLogin: {
         type: Date,
         default: Date.now
