@@ -7,6 +7,7 @@ const userRoutes = require('./routes/user.routes');
 const adminRoutes = require('./routes/admin.routes');
 const carRoutes = require('./routes/car.routes');
 const bookingRoutes = require('./routes/booking.routes');
+const verifyRoute = require('./routes/token.route');
 
 
 dotenv.config();
@@ -28,6 +29,7 @@ app.use('/api/user',userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/car',carRoutes);
 app.use('/api/booking',bookingRoutes);
+app.use('/api/verify',verifyRoute);
 
 
 const PORT = process.env.PORT || 5000;
