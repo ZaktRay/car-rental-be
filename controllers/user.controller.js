@@ -175,4 +175,24 @@ const changePassword = async (req, res) => {
     }
 }
 
-module.exports = { registerUser, loginUser, getProfile,updateProfile, changePassword };
+const getUsers = async(req,res)=>{
+    try{
+        const users = await User.find();
+        if(!users){
+            return res.json({
+                message : "no user found"
+            })
+        }
+        res.status(200).json({
+            messsage : "success",
+            date : users
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+}
+
+module.exports = { registerUser, loginUser, getProfile,updateProfile, changePassword, getUsers };
