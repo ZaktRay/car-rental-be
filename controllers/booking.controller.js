@@ -220,4 +220,27 @@ const cancelBooking = async (req, res) => {
     }
 }
 
-module.exports = { createBooking, updateBookingStatus, getUserBookings, getBookingById, cancelBooking }
+const getAllBookings = async (req, res) => {
+    try {
+        const bookings = await Booking.find();
+
+        if (!bookings || bookings.length === 0) {
+            return res.status(404).json({
+                message: "No bookings found"
+            });
+        }
+
+        res.status(200).json({
+            message: "Success",
+            data: bookings
+        });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({
+            message: "Server error"
+        });
+    }
+};
+
+
+module.exports = { createBooking, updateBookingStatus, getUserBookings, getBookingById, cancelBooking, getAllBookings }

@@ -3,7 +3,7 @@ const router = express.Router();
 const { protect } = require('../middlewares/admin.auth.middleware');
 const { registerAdmin, loginAdmin, getProfile, updateProfile, changePassword } = require('../controllers/admin.controller');
 const { addCar } = require('../controllers/car.controller');
-const { updateBookingStatus } = require('../controllers/booking.controller')
+const { updateBookingStatus, getAllBookings } = require('../controllers/booking.controller')
 const { getUsers } = require('../controllers/user.controller')
 const upload = require('../utils/multer')
 
@@ -18,6 +18,7 @@ router.put('/change-password', protect, changePassword);
 router.post('/addcar', protect, upload.single('image'), addCar);
 
 router.put('/updateBookingStatus', protect, updateBookingStatus);
+router.get('/getbookings',protect,getAllBookings);
 
 router.get('/getusers', protect, getUsers);
 
