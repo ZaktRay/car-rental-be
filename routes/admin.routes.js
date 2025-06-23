@@ -18,7 +18,7 @@ router.put('/change-password', protect, changePassword);
 router.post('/addcar', protect, upload.single('image'), addCar);
 
 router.put('/updateBookingStatus', protect, updateBookingStatus);
-router.get('/getbookings',getAllBookings);
+router.get('/getbookings',protect ,getAllBookings);
 
 router.get('/getusers', protect, getUsers);
 
