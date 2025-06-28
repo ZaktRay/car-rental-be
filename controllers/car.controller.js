@@ -187,9 +187,9 @@ const getAllCars = async (req, res) => {
     try {
         const cars = await Car.findById();
 
-        if (!bookings || bookings.length === 0) {
+        if (!cars || cars.length === 0) {
             return res.status(404).json({
-                message: "No bookings found"
+                message: "No cars found"
             });
         }
 
