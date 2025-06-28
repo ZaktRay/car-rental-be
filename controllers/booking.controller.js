@@ -1,5 +1,6 @@
 const Booking = require('../models/booking.model');
 const Car = require('../models/car.model');
+const User = require('../models/user.model')
 
 const createBooking = async (req, res) => {
     try {
@@ -222,10 +223,16 @@ const cancelBooking = async (req, res) => {
 
 const getAllBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find().populate({
+        const bookings = await Booking.find().populate([
+            {
                 path: 'carId',
                 select: 'name brand model'
-            });
+            },
+            {
+                path: 'userId',
+                select: 'name'
+            }
+        ]);
 
         if (!bookings || bookings.length === 0) {
             return res.status(404).json({
