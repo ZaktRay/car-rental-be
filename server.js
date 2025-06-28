@@ -8,7 +8,7 @@ const adminRoutes = require('./routes/admin.routes');
 const carRoutes = require('./routes/car.routes');
 const bookingRoutes = require('./routes/booking.routes');
 const verifyRoute = require('./routes/token.route');
-
+const morgan = require("morgan");
 
 dotenv.config();
 
@@ -26,17 +26,19 @@ app.use(cors({
   },
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
+
 }));
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-app.use('/api/user',userRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/car',carRoutes);
-app.use('/api/booking',bookingRoutes);
-app.use('/api/verify',verifyRoute);
+app.use('/api/car', carRoutes);
+app.use('/api/booking', bookingRoutes);
+app.use('/api/verify', verifyRoute);
+app.use(morgan("common"));
 
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT ,()=> console.log("server is running on PORT 5000"))
+app.listen(PORT, () => console.log("server is running on PORT 5000"))

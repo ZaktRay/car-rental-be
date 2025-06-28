@@ -222,7 +222,10 @@ const cancelBooking = async (req, res) => {
 
 const getAllBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find();
+        const bookings = await Booking.find().populate({
+                path: 'carId',
+                select: 'name brand model'
+            });
 
         if (!bookings || bookings.length === 0) {
             return res.status(404).json({

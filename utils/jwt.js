@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-
 exports.createToken = (user) => {
     return jwt.sign(
         {
@@ -12,10 +11,10 @@ exports.createToken = (user) => {
 }
 
 exports.verifyToken = (token) => {
-    try{
+    try {
         return jwt.verify(token, process.env.JWT_SECRET);
     }
-    catch(error) {
+    catch (error) {
         return null
     }
 }
