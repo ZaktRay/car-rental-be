@@ -185,7 +185,7 @@ const getCarImage = async (req, res) => {
 
 const getAllCars = async (req, res) => {
     try {
-        const cars = await Car.findById();
+        const cars = await Car.find();
 
         if (!cars || cars.length === 0) {
             return res.status(404).json({
