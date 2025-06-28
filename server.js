@@ -16,18 +16,11 @@ connectDB();
 
 const app = express();
 
-const allowedOrigins = ['http://localhost:5173'];
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    return callback(new Error('Not allowed by CORS'));
-  },
-  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-
-}));
+    origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+    credentials: true
+}))
 
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
