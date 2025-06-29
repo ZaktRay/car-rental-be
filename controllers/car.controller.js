@@ -18,7 +18,7 @@ const addCar = async (req, res) => {
             seats: parseInt(req.body.seats),
             fuelType: req.body.fuelType.toLowerCase(),
             transmission: req.body.transmission.toLowerCase(),
-            features: req.body.features,
+            features: Array.isArray(req.body.features) ? req.body.features : [req.body.features],
             image: `/uploads/car/${req.file.filename}`,
             isAvailable: true,
             category: req.body.category
