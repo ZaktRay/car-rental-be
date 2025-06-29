@@ -185,7 +185,7 @@ const getUsers = async(req,res)=>{
         }
         res.status(200).json({
             messsage : "success",
-            date : users
+            data : users
         })
     }
     catch(err){
